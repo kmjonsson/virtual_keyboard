@@ -1,0 +1,19 @@
+{
+  "name": "virtual_keyboard",
+  "version": "0.0.0",
+  "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kmjonsson/virtual_keyboard.git"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.2.10",
+    "jquery": "^3.2.1",
+    "ts-loader": "^2.3.2",
+    "typescript": "^2.4.2",
+    "webpack": "^3.4.1"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.2.10"
+  }
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' /> 
+    <title>Morse</title>
+    <style>
+        body{
+            background: #144766
+        }
+    </style>
+     <link rel="stylesheet" type="text/css" href="css/keyboard.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://foo.fot.nu/morse_code_player/morse_code_player.js"></script>
+    <script src="keyboard.js"></script>
+    <script>
+$(document).ready(function () {
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        var ctx = new AudioContext();
+        var morse = new MorsePlayer.MorsePlayer(ctx,550,20,10);
+	var mck = new Keyboard.Keyboard('#mck');
+	mck.on_click(function(key) {
+		morse.play(key);
+	});
+	mck.setup();
+});
+    </script>
+</head>
+<body>
+<div id="wrapper">
+	<br/>
+	<div id="mck"></div>
+</div>
+</body>
+</html>
