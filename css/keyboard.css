@@ -3,14 +3,20 @@
 	display: inline-block;
 	margin: 0.4vw;
 	font-size: 3vw;
-	width: 7vw;
-	height: 7vw; 
-	line-height: 7vw;
+	width: 8vw;
+	height: 8vw; 
+	line-height: 8vw;
 	border-width: 1px;
 	border-color: white;
 	border-style: solid;
 	text-align: center;
 	background: #306090;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 .keyboard_twolines {
 	line-height: 3.5vw;
@@ -25,6 +31,8 @@
 	width: 1vw;
 	height: 7vw;
 	line-height: 7vw;
+	border: none;
+	opacity: 0;
 }
 .keyboard_kspacing{
 	float: left;

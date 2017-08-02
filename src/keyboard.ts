@@ -12,15 +12,15 @@ export class Keyboard {
 	constructor(id: string) {
 		this.id = id;
 	}
-	private cb : (key: string) => any;
-	on_click(cb : (key: string) => any) {
+	private cb : (key: string, obj: any) => any;
+	on_click(cb : (key: string, obj: any) => any) {
 		this.cb = cb;
 	}
-	private click(key: string) : void {
+	private click(key: string, obj: any) : void {
 		if(this.cb === undefined) {
 			return;
 		}
-		this.cb(key);
+		this.cb(key,obj);
 	}
 	setup() {
 		let result = "";
@@ -33,17 +33,18 @@ export class Keyboard {
 				}
 				if(c == ' ') {
 					classes.push("keyboard_spacing"); 
-					c = '';
+					c = 'Y';
 				} else {
 					classes.push("keyboard"); 
 				}
 				i++;
-				result += '<div class="' +  classes.join(" ") +  '">' + c + '</div>';
+				//result += '<div class="' +  classes.join(" ") +  '">' + c + '</div>';
+				result += '<button class="' +  classes.join(" ") +  '">' + c + '</button>';
 			}
 		}
 		$(this.id).attr('style',"width: 100%; text-align: center; overflow:hidden");
 		$(this.id).html('<div style="">' + result + '</div>');
 		let k = this;
-		$('body').on('click', 'div.keyboard', function() {  k.click($(this).html()) });
+		$('body').on('click', 'button.keyboard', function() {  k.click($(this).html(),this) });
 	}
 }
