@@ -3,7 +3,9 @@
     "target": "es5",
     "lib": ["es2016","dom"],
     "module": "commonjs",
-    "outDir": "dist"
+    "outDir": "dist",
+    "declarationDir": "declarations",
+    "declaration": true
   },
   "include": [
     "src/**/*.ts"
