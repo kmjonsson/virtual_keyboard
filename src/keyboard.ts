@@ -28,6 +28,11 @@ export class Keyboard {
 			let i=0;
 			for(let c of r) {
 				let classes:string[] = [];
+				let key = c;
+				if(c.indexOf("\n") >= 0) {
+					classes.push("keyboard_twolines"); 
+					key = c.substring(0,c.indexOf("\n"));
+				}
 				if(!i) { 
 					classes.push("keyboard_first"); 
 				}
@@ -38,8 +43,7 @@ export class Keyboard {
 					classes.push("keyboard"); 
 				}
 				i++;
-				//result += '<div class="' +  classes.join(" ") +  '">' + c + '</div>';
-				result += '<button class="' +  classes.join(" ") +  '">' + c + '</button>';
+				result += '<button key="' + key + '" class="' +  classes.join(" ") +  '">' + c + '</button>';
 			}
 		}
 		$(this.id).attr('style',"width: 100%; text-align: center; overflow:hidden");
