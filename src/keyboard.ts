@@ -9,8 +9,10 @@ export class Keyboard {
 		[" "," "," ","Z","X","C","V","B","N","M"],
 	];
 	private id : string;
-	constructor(id: string) {
+	private kbd_hook:boolean;
+	constructor(id: string, kbd_hook:boolean=true) {
 		this.id = id;
+		this.kbd_hook = kbd_hook;
 	}
 	private cb : (key: string, obj: any) => any;
 	on_click(cb : (key: string, obj: any) => any) {
@@ -50,10 +52,12 @@ export class Keyboard {
 		$(this.id).html('<div style="">' + result + '</div>');
 		let k = this;
 		$('body').on('click', 'button.keyboard', function() {  k.click($(this).html(),this) });
-		$('body').keypress(function(ev) {
-			if($('.keyboard[key="' + ev.key.toUpperCase() + '"]')) {
-				k.click(ev.key.toUpperCase(),$('.keyboard[key="' + ev.key.toUpperCase() + '"]'));
-			}
-		});
+		if(this.kbd_hook) {
+			$('body').keypress(function(ev) {
+				if($('.keyboard[key="' + ev.key.toUpperCase() + '"]')) {
+					k.click(ev.key.toUpperCase(),$('.keyboard[key="' + ev.key.toUpperCase() + '"]'));
+				}
+			});
+		}
 	}
 }
