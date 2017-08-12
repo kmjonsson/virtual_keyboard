@@ -54,7 +54,7 @@ export class Keyboard {
 		$('body').on('click', 'button.keyboard', function() {  k.click($(this).html(),this) });
 		if(this.kbd_hook) {
 			$('body').keypress(function(ev) {
-				if($('.keyboard[key="' + ev.key.toUpperCase() + '"]')) {
+				if($('.keyboard[key="' + ev.key.toUpperCase() + '"]').length) {
 					k.click(ev.key.toUpperCase(),$('.keyboard[key="' + ev.key.toUpperCase() + '"]'));
 				}
 			});
