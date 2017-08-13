@@ -25,6 +25,10 @@ $(document).ready(function () {
 	var mck = new Keyboard.Keyboard('#mck');
 	mck.on_click(function(key) {
 		morse.play(key);
+		mck.disable();
+		setTimeout(function() {
+			mck.enable();
+		},10000);
 	});
 	mck.setup();
 });

@@ -9,6 +9,7 @@ export class Keyboard {
 		[" "," "," ","Z","X","C","V","B","N","M","=","/"],
 	];
 	private id : string;
+	private enabled : boolean = true;
 	private kbd_hook:boolean;
 	constructor(id: string, kbd_hook:boolean=true) {
 		this.id = id;
@@ -18,8 +19,17 @@ export class Keyboard {
 	on_click(cb : (key: string, obj: any) => any) {
 		this.cb = cb;
 	}
+	enable() {
+		this.enabled = true;
+	}
+	disable() {
+		this.enabled = false;
+	}
 	private click(key: string, obj: any) : void {
 		if(this.cb === undefined) {
+			return;
+		}
+		if(!this.enabled) {
 			return;
 		}
 		this.cb(key,obj);
